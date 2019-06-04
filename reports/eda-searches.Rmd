@@ -11,6 +11,7 @@ Aqui, exploramos esses dados.
 library(tidyverse)
 library(here)
 library(lubridate)
+library(boot)
 theme_set(theme_bw())
 ```
 
@@ -19,8 +20,34 @@ buscas = read_csv(here::here("data/search_data.csv"))
 ```
 
 ```{r}
-buscas %>% 
-    ggplot(aes(x = results)) + 
-    geom_histogram(binwidth = 5) 
+
+buscas = buscas %>%
+    group_by(group, session_id)%>%
+    summarise(clicked = if_else(max(num_clicks) > 0, T,F))
+
+buscas    
+
+```
+
+```{r}
+
+funcao_theta_clickthrough_rate = function(d, i) {
+  d1 = d%>% slice(i)
+  total_group = d1 %>% group_by(group) %>% summarise(amount = n())
+  total_group_clicked = d1 %>% filter(clicked == T) %>% group_by(group) %>% summarise(amount_clicked = n())
+  join = total_group %>% inner_join(total_group_clicked, by="group") %>% mutate(prop = amount_clicked/amount)
+  prop_a = join %>% filter(group == "a") %>% pull(prop)
+  prop_b = join %>% filter(group == "b") %>% pull(prop)
+  return (prop_a - prop_b)
+}
+
+theta_clickthrough_rate = funcao_theta_clickthrough_rate(buscas, 1:NROW(buscas))
+
+booted <- boot(data = buscas,
+               statistic = funcao_theta_clickthrough_rate,
+               R = 4000)
+intervalo_calc <- boot.ci(booted, conf=.95, type="bca")
+intervalo_calc
+
 ```
 
