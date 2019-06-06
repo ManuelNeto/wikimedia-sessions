@@ -477,9 +477,8 @@ mean(abs(diffs) &gt;= abs(theta_diferenca_fds(dados, 1:NROW(dados))))
 <h1>zeroResults_rate</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50aGV0YV9kaWZmX3plcm9fcmVzdWx0c19yYXRlID0gZnVuY3Rpb24oYnVzY2FzLCBpKXtcbiAgICB6ZXJvX3Jlc3VsdHNfcmF0ZXMgPSBidXNjYXMgJT4lXG4gICAgICAgIHNsaWNlKGkpICU+JVxuICAgICAgICBncm91cF9ieShncm91cCkgJT4lIFxuICAgICAgICBzdW1tYXJpc2UoemVyb19yZXN1bHRzX3JhdGUgPSBzdW0ocmVzdWx0cyA9PSAwKS9uKCkpIFxuICAgIFxuICAgIGdyb3VwLmEgPSB6ZXJvX3Jlc3VsdHNfcmF0ZXMgJT4lIGZpbHRlcihncm91cCA9PSBcImFcIikgJT4lIHB1bGwoemVyb19yZXN1bHRzX3JhdGUpXG4gICAgZ3JvdXAuYiA9IHplcm9fcmVzdWx0c19yYXRlcyAlPiUgZmlsdGVyKGdyb3VwID09IFwiYlwiKSAlPiUgcHVsbCh6ZXJvX3Jlc3VsdHNfcmF0ZSlcbiAgICBcbiAgICBncm91cC5hIC0gZ3JvdXAuYlxufVxuXG50aGV0YV9lbWJhcmFsaGFkb196ZXJvX3Jlc3VsdHMgPSBmdW5jdGlvbihidXNjYXMpe1xuICAgIHplcm9fcmVzdWx0c19yYXRlcyA9IGJ1c2NhcyAlPiUgXG4gICAgICAgIG11dGF0ZShncnVwb19lbWJhcmFsaGFkbyA9IHNhbXBsZShncm91cCwgbigpKSkgJT4lIFxuICAgICAgICBncm91cF9ieShncnVwb19lbWJhcmFsaGFkbykgJT4lIFxuICAgICAgICBzdW1tYXJpc2UoemVyb19yZXN1bHRzX3JhdGUgPSBzdW0ocmVzdWx0cyA9PSAwKS9uKCkpIFxuICAgIFxuICAgIGdyb3VwLmEgPSB6ZXJvX3Jlc3VsdHNfcmF0ZXMgJT4lIGZpbHRlcihncnVwb19lbWJhcmFsaGFkbyA9PSBcImFcIikgJT4lIHB1bGwoemVyb19yZXN1bHRzX3JhdGUpXG4gICAgZ3JvdXAuYiA9IHplcm9fcmVzdWx0c19yYXRlcyAlPiUgZmlsdGVyKGdydXBvX2VtYmFyYWxoYWRvID09IFwiYlwiKSAlPiUgcHVsbCh6ZXJvX3Jlc3VsdHNfcmF0ZSlcbiAgICBcbiAgICBncm91cC5hIC0gZ3JvdXAuYlxufVxuXG50aGV0YV9lbWJhcmFsaGFkb196ZXJvX3Jlc3VsdHMoYnVzY2FzKVxuXG50aGV0YV9kaWZmX3plcm9fcmVzdWx0c19yYXRlKGJ1c2NhcywgMTpOUk9XKGJ1c2NhcykpXG5cbmRpZmZzX3plcm9fcmVzdWx0cyA9IHJlcGxpY2F0ZSgyMDAwLCB7dGhldGFfZW1iYXJhbGhhZG9femVyb19yZXN1bHRzKGJ1c2Nhcyl9KVxuXG5wLnZhbHVlIDwtIG1lYW4oYWJzKGRpZmZzX3plcm9fcmVzdWx0cykgPj0gYWJzKHRoZXRhX2RpZmZfemVyb19yZXN1bHRzX3JhdGUoYnVzY2FzLCAxOk5ST1coYnVzY2FzKSkpKVxuXG5wLnZhbHVlXG5cbmBgYCJ9 -->
-<pre class="r"><code>
-theta_diff_zero_results_rate = function(buscas, i){
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGhldGFfZGlmZl96ZXJvX3Jlc3VsdHNfcmF0ZSA9IGZ1bmN0aW9uKGJ1c2NhcywgaSl7XG4gICAgemVyb19yZXN1bHRzX3JhdGVzID0gYnVzY2FzICU+JVxuICAgICAgICBzbGljZShpKSAlPiVcbiAgICAgICAgZ3JvdXBfYnkoZ3JvdXApICU+JSBcbiAgICAgICAgc3VtbWFyaXNlKHplcm9fcmVzdWx0c19yYXRlID0gc3VtKHJlc3VsdHMgPT0gMCkvbigpKSBcbiAgICBcbiAgICBncm91cC5hID0gemVyb19yZXN1bHRzX3JhdGVzICU+JSBmaWx0ZXIoZ3JvdXAgPT0gXCJhXCIpICU+JSBwdWxsKHplcm9fcmVzdWx0c19yYXRlKVxuICAgIGdyb3VwLmIgPSB6ZXJvX3Jlc3VsdHNfcmF0ZXMgJT4lIGZpbHRlcihncm91cCA9PSBcImJcIikgJT4lIHB1bGwoemVyb19yZXN1bHRzX3JhdGUpXG4gICAgXG4gICAgZ3JvdXAuYSAtIGdyb3VwLmJcbn1cbnRoZXRhX2VtYmFyYWxoYWRvX3plcm9fcmVzdWx0cyA9IGZ1bmN0aW9uKGJ1c2Nhcyl7XG4gICAgemVyb19yZXN1bHRzX3JhdGVzID0gYnVzY2FzICU+JSBcbiAgICAgICAgbXV0YXRlKGdydXBvX2VtYmFyYWxoYWRvID0gc2FtcGxlKGdyb3VwLCBuKCkpKSAlPiUgXG4gICAgICAgIGdyb3VwX2J5KGdydXBvX2VtYmFyYWxoYWRvKSAlPiUgXG4gICAgICAgIHN1bW1hcmlzZSh6ZXJvX3Jlc3VsdHNfcmF0ZSA9IHN1bShyZXN1bHRzID09IDApL24oKSkgXG4gICAgXG4gICAgZ3JvdXAuYSA9IHplcm9fcmVzdWx0c19yYXRlcyAlPiUgZmlsdGVyKGdydXBvX2VtYmFyYWxoYWRvID09IFwiYVwiKSAlPiUgcHVsbCh6ZXJvX3Jlc3VsdHNfcmF0ZSlcbiAgICBncm91cC5iID0gemVyb19yZXN1bHRzX3JhdGVzICU+JSBmaWx0ZXIoZ3J1cG9fZW1iYXJhbGhhZG8gPT0gXCJiXCIpICU+JSBwdWxsKHplcm9fcmVzdWx0c19yYXRlKVxuICAgIFxuICAgIGdyb3VwLmEgLSBncm91cC5iXG59XG50aGV0YV9lbWJhcmFsaGFkb196ZXJvX3Jlc3VsdHMoYnVzY2FzKVxuYGBgIn0= -->
+<pre class="r"><code>theta_diff_zero_results_rate = function(buscas, i){
     zero_results_rates = buscas %&gt;%
         slice(i) %&gt;%
         group_by(group) %&gt;% 
@@ -490,7 +489,6 @@ theta_diff_zero_results_rate = function(buscas, i){
     
     group.a - group.b
 }
-
 theta_embaralhado_zero_results = function(buscas){
     zero_results_rates = buscas %&gt;% 
         mutate(grupo_embaralhado = sample(group, n())) %&gt;% 
@@ -502,18 +500,25 @@ theta_embaralhado_zero_results = function(buscas){
     
     group.a - group.b
 }
-
-theta_embaralhado_zero_results(buscas)
-
-theta_diff_zero_results_rate(buscas, 1:NROW(buscas))
-
-diffs_zero_results = replicate(2000, {theta_embaralhado_zero_results(buscas)})
-
-p.value &lt;- mean(abs(diffs_zero_results) &gt;= abs(theta_diff_zero_results_rate(buscas, 1:NROW(buscas))))
-
-p.value
-</code></pre>
+theta_embaralhado_zero_results(buscas)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0wLjAwMDk5ODU3MjlcbiJ9 -->
+<pre><code>[1] -0.0009985729</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGhldGFfZGlmZl96ZXJvX3Jlc3VsdHNfcmF0ZShidXNjYXMsIDE6TlJPVyhidXNjYXMpKVxuYGBgIn0= -->
+<pre class="r"><code>theta_diff_zero_results_rate(buscas, 1:NROW(buscas))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0wLjAwMjU3MzAxXG4ifQ== -->
+<pre><code>[1] -0.00257301</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGlmZnNfemVyb19yZXN1bHRzID0gcmVwbGljYXRlKDIwMDAsIHt0aGV0YV9lbWJhcmFsaGFkb196ZXJvX3Jlc3VsdHMoYnVzY2FzKX0pXG5wLnZhbHVlIDwtIG1lYW4oYWJzKGRpZmZzX3plcm9fcmVzdWx0cykgPj0gYWJzKHRoZXRhX2RpZmZfemVyb19yZXN1bHRzX3JhdGUoYnVzY2FzLCAxOk5ST1coYnVzY2FzKSkpKVxucC52YWx1ZVxuYGBgIn0= -->
+<pre class="r"><code>diffs_zero_results = replicate(2000, {theta_embaralhado_zero_results(buscas)})
+p.value &lt;- mean(abs(diffs_zero_results) &gt;= abs(theta_diff_zero_results_rate(buscas, 1:NROW(buscas))))
+p.value</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMjM2NVxuIn0= -->
+<pre><code>[1] 0.2365</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
